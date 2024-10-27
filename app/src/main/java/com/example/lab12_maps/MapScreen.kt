@@ -3,6 +3,7 @@ package com.example.lab12_maps
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -28,7 +29,53 @@ fun MapScreen() {
         LatLng(-16.3524187, -71.5675994)  // Zamacola
     )
 
+    // Controlar la cámara para que se mueva a Yura al inicio
+    LaunchedEffect(Unit) {
+        cameraPositionState.animate(
+            update = com.google.android.gms.maps.CameraUpdateFactory.newLatLngZoom(LatLng(-16.2520984, -71.6836503), 12f), // Nueva ubicación en Yura
+            durationMs = 3000 // Duración de la animación en milisegundos
+        )
 
+    }
+
+    //parte 4
+    // Definir los polígonos
+    val mallAventuraPolygon = listOf(
+        LatLng(-16.432292, -71.509145),
+        LatLng(-16.432757, -71.509626),
+        LatLng(-16.433013, -71.509310),
+        LatLng(-16.432566, -71.508853)
+    )
+
+    val parqueLambramaniPolygon = listOf(
+        LatLng(-16.422704, -71.530830),
+        LatLng(-16.422920, -71.531340),
+        LatLng(-16.423264, -71.531110),
+        LatLng(-16.423050, -71.530600)
+    )
+
+    val plazaDeArmasPolygon = listOf(
+        LatLng(-16.398866, -71.536961),
+        LatLng(-16.398744, -71.536529),
+        LatLng(-16.399178, -71.536289),
+        LatLng(-16.399299, -71.536721)
+    )
+
+
+    // Definir las rutas para las polilíneas
+    val rutaUno = listOf(
+        LatLng(-16.4040102, -71.559611),
+        LatLng(-16.4110102, -71.561611),
+        LatLng(-16.4180102, -71.565611)
+    )
+
+    val rutaDos = listOf(
+        LatLng(-16.4140102, -71.550611),
+        LatLng(-16.4200102, -71.552611),
+        LatLng(-16.4260102, -71.556611)
+    )
+
+    //Aqui aparece lo del marcador
     Box(modifier = Modifier.fillMaxSize()) {
         // Añadir GoogleMap al layout
         GoogleMap(
@@ -49,6 +96,26 @@ fun MapScreen() {
                     snippet = "Punto de interés"
                 )
             }
+
+            // Dibujar polígonos
+            com.google.maps.android.compose.Polygon(
+                points = plazaDeArmasPolygon,
+                strokeColor = androidx.compose.ui.graphics.Color.Red,
+                fillColor = androidx.compose.ui.graphics.Color.Blue,
+                strokeWidth = 5f
+            )
+            com.google.maps.android.compose.Polygon(
+                points = parqueLambramaniPolygon,
+                strokeColor = androidx.compose.ui.graphics.Color.Red,
+                fillColor = androidx.compose.ui.graphics.Color.Blue,
+                strokeWidth = 5f
+            )
+            com.google.maps.android.compose.Polygon(
+                points = mallAventuraPolygon,
+                strokeColor = androidx.compose.ui.graphics.Color.Red,
+                fillColor = androidx.compose.ui.graphics.Color.Blue,
+                strokeWidth = 5f
+            )
         }
     }
 }
