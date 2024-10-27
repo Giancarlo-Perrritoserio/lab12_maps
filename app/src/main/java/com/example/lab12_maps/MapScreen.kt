@@ -116,6 +116,20 @@ fun MapScreen() {
                 fillColor = androidx.compose.ui.graphics.Color.Blue,
                 strokeWidth = 5f
             )
+
+            // Polilínea de Ruta Uno
+            com.google.maps.android.compose.Polyline(
+                points = rutaUno,
+                color = androidx.compose.ui.graphics.Color.Green,
+                width = 10f // Ancho de la línea
+            )
+
+            // Polilínea de Ruta Dos
+            com.google.maps.android.compose.Polyline(
+                points = rutaDos,
+                color = androidx.compose.ui.graphics.Color.Magenta,
+                width = 8f // Ancho de la línea
+            )
         }
     }
 }
