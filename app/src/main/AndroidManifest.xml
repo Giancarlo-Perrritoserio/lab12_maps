@@ -19,7 +19,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCRvLLgXm7seGpD_w6SqGAMpzaa-lqP2Oo"/>
+            android:value="codigo api"/>
 
 
         <activity
