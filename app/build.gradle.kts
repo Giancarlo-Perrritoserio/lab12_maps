@@ -77,4 +77,10 @@ dependencies {
 
 
     implementation(libs.play.services.location)
+
+
+    implementation(libs.ui)
+    implementation(libs.androidx.material)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.maps.compose.v221)
 }
